@@ -3,6 +3,7 @@ import { auth } from './firebase/firebase.config';
 import 'firebase/firestore';
 import './App.css';
 import { ClientContext } from './context';
+import LoginPage from './routes/login';
 // import { Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -12,7 +13,6 @@ function App() {
     setUser,
     initializing,
     setInitializing,
-    signInWithGoogle,
     signOutUser,
   } = context;
 
@@ -29,19 +29,13 @@ function App() {
     });
 
     return unsubscribe;
-//eslint-disable-next-line
+    //eslint-disable-next-line
   }, []);
 
   return (
     <div className="App">
       {!user ? (
-        <button
-          onClick={async () => {
-            await signInWithGoogle();
-          }}
-        >
-          Sign in
-        </button>
+        <LoginPage />
       ) : (
         <button
           onClick={async () => {
