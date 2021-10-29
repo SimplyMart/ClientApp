@@ -1,23 +1,56 @@
-import logo from './logo.svg';
+import React, { useEffect, useContext } from 'react';
+import { auth } from './firebase/firebase.config';
+import 'firebase/firestore';
 import './App.css';
+import { ClientContext } from './context';
+// import { Switch, Route, Link } from 'react-router-dom';
 
 function App() {
+  const context = useContext(ClientContext);
+  const {
+    user,
+    setUser,
+    initializing,
+    setInitializing,
+    signInWithGoogle,
+    signOutUser,
+  } = context;
+
+  useEffect(() => {
+    const unsubscribe = auth.onAuthStateChanged((user) => {
+      if (user) {
+        setUser(user);
+      } else {
+        setUser(false);
+      }
+      if (initializing) {
+        setInitializing(false);
+      }
+    });
+
+    return unsubscribe;
+//eslint-disable-next-line
+  }, []);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
+      {!user ? (
+        <button
+          onClick={async () => {
+            await signInWithGoogle();
+          }}
         >
-          Learn React
-        </a>
-      </header>
+          Sign in
+        </button>
+      ) : (
+        <button
+          onClick={async () => {
+            await signOutUser();
+          }}
+        >
+          Sign out
+        </button>
+      )}
     </div>
   );
 }
