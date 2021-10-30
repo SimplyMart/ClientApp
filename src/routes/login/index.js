@@ -8,7 +8,6 @@ import logo from '../../assets/logo.png';
 
 const Wrapper = styled.div`
   width: 100vw;
-  height: 100vh;
   background-color: #fff;
   text-align: center;
   padding: 5% 5%;

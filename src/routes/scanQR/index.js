@@ -12,7 +12,7 @@ const Wrapper = styled.div`
 `;
 
 const Heading = styled.div`
-  width: 90%;
+  width: 100%;
   padding: 30px 20px 20px;
   font-family: 'Sora', sans-serif;
   font-size: 35px;
@@ -22,7 +22,7 @@ const Heading = styled.div`
 `;
 
 const SubHeading = styled.div`
-  width: 90%;
+  width: 100%;
   padding: 0 20px 30px;
   font-family: 'Sora', sans-serif;
   font-size: 20px;
@@ -58,7 +58,7 @@ const ScanQRCode = () => {
           style={{ width: '100%' }}
         />
         <SubHeading style={{marginTop: '30px'}}>
-          Note: Place the QR code in the highlighted sqaure
+          Note: Place the QR code in the highlighted square
         </SubHeading>
         <h5>{qrCodeResult}</h5>
     </Wrapper>

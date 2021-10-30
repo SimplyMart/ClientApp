@@ -7,6 +7,7 @@ const ClientContext = createContext();
 const ClientProvider = ({ children }) => {
   const [user, setUser] = useState(() => auth.currentUser);
   const [initializing, setInitializing] = useState(true);
+  const [cartItems, setCartItems] = useState([]);
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
@@ -35,6 +36,8 @@ const ClientProvider = ({ children }) => {
         setInitializing,
         signInWithGoogle,
         signOutUser,
+        cartItems,
+        setCartItems,
       }}
     >
       {children}

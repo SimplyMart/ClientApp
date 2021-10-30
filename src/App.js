@@ -1,11 +1,12 @@
 import React, { useEffect, useContext } from 'react';
-import { auth } from './firebase/firebase.config';
-import 'firebase/firestore';
+import { auth, createUserProfileDocument } from './firebase/firebase.config';
+import { onSnapshot } from 'firebase/firestore';
 import './App.css';
 import { ClientContext } from './context';
 import LoginPage from './routes/login';
 import BottomNavBar from './components/bottomNavBar';
 import ScanQRCode from './routes/scanQR';
+import Cart from './routes/cart';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
@@ -13,9 +14,16 @@ function App() {
   const { user, setUser, initializing, setInitializing, signOutUser } = context;
 
   useEffect(() => {
-    const unsubscribe = auth.onAuthStateChanged((user) => {
+    const unsubscribe = auth.onAuthStateChanged(async (user) => {
       if (user) {
-        setUser(user);
+        const userRef = await createUserProfileDocument(user);
+
+        onSnapshot(userRef, (snapShot) => {
+          setUser({
+            id: snapShot.id,
+            ...snapShot.data(),
+          });
+        });
       } else {
         setUser(false);
       }
@@ -43,6 +51,7 @@ function App() {
           </button>
           <Switch>
             <Route exact path="/scanQr" component={ScanQRCode} />
+            <Route exact path="/cart" component={Cart} />
           </Switch>
           <BottomNavBar />
         </div>

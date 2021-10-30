@@ -1,6 +1,6 @@
 import { initializeApp } from 'firebase/app';
 import { getAuth } from "firebase/auth";
-import { getFirestore } from 'firebase/firestore';
+import { getFirestore, doc, getDoc, setDoc } from 'firebase/firestore';
 import { getStorage } from 'firebase/storage';
 
 const firebaseConfig = {
@@ -16,6 +16,32 @@ const app = initializeApp(firebaseConfig);
 
 export const auth = getAuth(app);
 export const storage = getStorage(app);
-export const db = getFirestore();
+export const db = getFirestore(app);
+
+export const createUserProfileDocument = async (userAuth, additionalData = {}) => {
+  if (!userAuth) return;
+
+  const userRef = doc(db, 'users', `${userAuth.uid}`);
+
+  const snapShot = await getDoc(userRef);
+
+  if (!snapShot.exists()) {
+    const { displayName, email } = userAuth;
+    const createdAt = new Date();
+
+    try {
+      await setDoc(userRef, {
+        displayName,
+        email,
+        createdAt,
+        ...additionalData,
+      });
+    } catch (error) {
+      console.log('Error creating the User', error.message);
+    }
+  }
+
+  return userRef;
+};
 
 export default app;
