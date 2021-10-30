@@ -4,7 +4,7 @@ import './styles.scss';
 import { ClientContext } from '../../context';
 
 const Wrapper = styled.div`
-  padding: 30px 20px;
+  padding: 30px 20px 70px;
   background-color: #f5f5f5;
   min-height: 100vh;
   text-align: center;

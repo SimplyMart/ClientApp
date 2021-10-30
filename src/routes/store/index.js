@@ -1,21 +1,13 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import emptyCart from '../../assets/emptyCart.png';
 import './styles.scss';
 import { ClientContext } from '../../context';
-import CartItems from '../../components/cartItems/index';
 
 const Wrapper = styled.div`
   padding: 30px 20px 70px;
   background-color: #f5f5f5;
   min-height: 100vh;
   text-align: center;
-`;
-
-const StyledImage = styled.img`
-  margin: 120px auto auto;
-  width: 300px;
-  display: block;
 `;
 
 const SubHeading = styled.div`
@@ -38,28 +30,13 @@ const Heading = styled.div`
   color: #2b2b2b;
 `;
 
-const Cart = () => {
+const HomePage = () => {
   const context = useContext(ClientContext);
-  const { cartItems } = context;
   return (
     <Wrapper>
-      {cartItems.length === 0 ? (
-        <>
-          <StyledImage src={emptyCart} />
-          <SubHeading style={{ marginTop: '30px', marginBottom: '70px' }}>
-            Add new items in cart by scanning their barcode
-          </SubHeading>
-        </>
-      ) : (
-        <>
-          <Heading>Cart</Heading>
-          {cartItems.map((item, index) => (
-            <CartItems key={index} {...item} />
-          ))}
-        </>
-      )}
+      <Heading>Visited Stores</Heading>
     </Wrapper>
   );
 };
 
-export default Cart;
+export default HomePage;
