@@ -8,6 +8,7 @@ const Wrapper = styled.div`
   background-color: #f5f5f5;
   height: 100vh;
   text-align: center;
+  margin-bottom: 50px;
 `;
 
 const Heading = styled.div`

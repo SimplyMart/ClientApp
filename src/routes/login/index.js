@@ -23,7 +23,7 @@ const StyledLogo = styled.img`
 
 const StyledLoginButton = styled(Button)`
   margin-top: 40px;
-  width: 400px;
+  width: 90%;
   height: 60px;
   border-radius: 40px;
   font-family: 'Sora', sans-serif;
@@ -48,7 +48,7 @@ const Drawer = styled.div`
   border-top-left-radius: 40px;
   border-top-right-radius: 40px;
   background-color: #23234c;
-  width: 100%;
+  width: 100vw;
   left: 0;
 `;
 

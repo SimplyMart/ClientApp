@@ -10,12 +10,7 @@ import { Switch, Route } from 'react-router-dom';
 
 function App() {
   const context = useContext(ClientContext);
-  const {
-    user,
-    setUser,
-    initializing,
-    setInitializing,
-  } = context;
+  const { user, setUser, initializing, setInitializing, signOutUser } = context;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged((user) => {
@@ -39,13 +34,13 @@ function App() {
         <LoginPage />
       ) : (
         <div>
-          {/* <button
+          <button
             onClick={async () => {
               await signOutUser();
             }}
           >
             Sign out
-          </button> */}
+          </button>
           <Switch>
             <Route exact path="/scanQr" component={ScanQRCode} />
           </Switch>
