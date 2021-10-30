@@ -4,6 +4,7 @@ import 'firebase/firestore';
 import './App.css';
 import { ClientContext } from './context';
 import LoginPage from './routes/login';
+import BottomNavBar from './components/bottomNavBar';
 // import { Switch, Route, Link } from 'react-router-dom';
 
 function App() {
@@ -37,13 +38,16 @@ function App() {
       {!user ? (
         <LoginPage />
       ) : (
-        <button
-          onClick={async () => {
-            await signOutUser();
-          }}
-        >
-          Sign out
-        </button>
+        <div>
+          <button
+            onClick={async () => {
+              await signOutUser();
+            }}
+          >
+            Sign out
+          </button>
+          <BottomNavBar />
+        </div>
       )}
     </div>
   );
