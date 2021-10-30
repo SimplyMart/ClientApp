@@ -6,12 +6,14 @@ import { ClientContext } from './context';
 import LoginPage from './routes/login';
 import BottomNavBar from './components/bottomNavBar';
 import ScanQRCode from './routes/scanQR';
+import Profile from './routes/profile';
 import Cart from './routes/cart';
+import LoadingPage from './routes/loading';
 import { Switch, Route } from 'react-router-dom';
 
 function App() {
   const context = useContext(ClientContext);
-  const { user, setUser, initializing, setInitializing, signOutUser } = context;
+  const { user, setUser, initializing, setInitializing } = context;
 
   useEffect(() => {
     const unsubscribe = auth.onAuthStateChanged(async (user) => {
@@ -38,20 +40,16 @@ function App() {
 
   return (
     <div className="App">
-      {!user ? (
+      {initializing ? (
+        <LoadingPage />
+      ) : !user ? (
         <LoginPage />
       ) : (
         <div>
-          <button
-            onClick={async () => {
-              await signOutUser();
-            }}
-          >
-            Sign out
-          </button>
           <Switch>
             <Route exact path="/scanQr" component={ScanQRCode} />
             <Route exact path="/cart" component={Cart} />
+            <Route exact path="/profile" component={Profile} />
           </Switch>
           <BottomNavBar />
         </div>
