@@ -6,9 +6,9 @@ import './styles.scss';
 const Wrapper = styled.div`
   padding: 30px;
   background-color: #f5f5f5;
-  height: 100vh;
+  min-height: 100vh;
   text-align: center;
-  margin-bottom: 50px;
+  padding-bottom: 70px;
 `;
 
 const Heading = styled.div`
@@ -45,7 +45,6 @@ const ScanQRCode = () => {
 
   return (
     <Wrapper>
-      <div>
         <Heading>Scan QR Code</Heading>
         <SubHeading>
           To Add a new store scan the QR code for the store using the below
@@ -62,7 +61,6 @@ const ScanQRCode = () => {
           Note: Place the QR code in the highlighted sqaure
         </SubHeading>
         <h5>{qrCodeResult}</h5>
-      </div>
     </Wrapper>
   );
 };

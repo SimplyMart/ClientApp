@@ -12,6 +12,7 @@ const Wrapper = styled.div`
   background-color: #fff;
   text-align: center;
   padding: 5% 5%;
+  overflow: hidden;
 `;
 
 const StyledLogo = styled.img`
@@ -29,7 +30,7 @@ const StyledLoginButton = styled(Button)`
   font-family: 'Sora', sans-serif;
   background: white;
   color: #000;
-  font-size: 27px;
+  font-size: 20px;
   font-weight: 400;
   display: flex;
   justify-content: center;
