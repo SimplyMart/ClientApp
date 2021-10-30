@@ -32,8 +32,13 @@ const StyledInput = styled(Input)`
   font-size: 18px;
   color: #2b2b2b;
 
+  &:focus, &:hover {
+    border-color: #2b2b2b !important;
+    box-shadow: none !important;
+  }
+
   .ant-input-lg {
-      font-size: 18px;
+    font-size: 18px;
   }
 `;
 
@@ -52,11 +57,11 @@ const StyledLogoutButton = styled(Button)`
   height: 60px;
   border-radius: 40px;
   font-family: 'Sora', sans-serif;
-  background: white;
-  color: red;
+  background: #d22b2b;
+  color: white;
   font-size: 24px;
   font-weight: 400;
-  border: 2px solid red;
+  border: 2px solid white;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,8 +69,9 @@ const StyledLogoutButton = styled(Button)`
 
   &:hover,
   &:focus {
-    color: red;
-    border: 2px solid red;
+    color: white;
+    background: #d22b2b;
+    border: 2px solid white;
   }
 `;
 

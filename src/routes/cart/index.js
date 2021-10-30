@@ -3,9 +3,10 @@ import styled from 'styled-components';
 import emptyCart from '../../assets/emptyCart.png';
 import './styles.scss';
 import { ClientContext } from '../../context';
+import CartItems from '../../components/cartItems/index';
 
 const Wrapper = styled.div`
-  padding: 30px;
+  padding: 30px 20px;
   background-color: #f5f5f5;
   min-height: 100vh;
   text-align: center;
@@ -27,6 +28,16 @@ const SubHeading = styled.div`
   color: #a9a9a9;
 `;
 
+const Heading = styled.div`
+  width: 100%;
+  padding: 10px 20px 20px;
+  font-family: 'Sora', sans-serif;
+  font-size: 35px;
+  font-weight: 900;
+  margin: auto;
+  color: #2b2b2b;
+`;
+
 const Cart = () => {
   const context = useContext(ClientContext);
   const { cartItems } = context;
@@ -40,7 +51,12 @@ const Cart = () => {
           </SubHeading>
         </>
       ) : (
-        <span>Not Empty</span>
+        <>
+          <Heading>Cart</Heading>
+          {cartItems.map((item, index) => (
+            <CartItems key={index} {...item} />
+          ))}
+        </>
       )}
     </Wrapper>
   );

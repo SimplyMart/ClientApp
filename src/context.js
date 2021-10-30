@@ -7,7 +7,21 @@ const ClientContext = createContext();
 const ClientProvider = ({ children }) => {
   const [user, setUser] = useState(() => auth.currentUser);
   const [initializing, setInitializing] = useState(true);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([
+    {
+      name: 'Lays',
+      price: '20',
+      quantity: 1,
+      image: 'https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg',
+    },
+    {
+      name: 'Frooti',
+      price: '25',
+      quantity: 12,
+      image:
+        'https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg',
+    },
+  ]);
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();

@@ -10,10 +10,16 @@ const Wrapper = styled.div`
   align-items: center;
 `;
 
+const StyledSpinner = styled(Spin)`
+  .ant-spin-dot-item {
+    background-color: #2b2b2b;
+  }
+`;
+
 const LoadingPage = () => {
   return (
     <Wrapper>
-      <Spin size="large" />
+      <StyledSpinner size="large" />
     </Wrapper>
   );
 };
