@@ -1,15 +1,16 @@
-import React, { useEffect, useContext } from 'react';
-import { auth, createUserProfileDocument } from './firebase/firebase.config';
-import { onSnapshot } from 'firebase/firestore';
-import './App.css';
-import { ClientContext } from './context';
-import LoginPage from './routes/login';
-import BottomNavBar from './components/bottomNavBar';
-import ScanQRCode from './routes/scanQR';
-import Profile from './routes/profile';
-import Cart from './routes/cart';
-import LoadingPage from './routes/loading';
-import { Switch, Route } from 'react-router-dom';
+import React, { useEffect, useContext } from "react";
+import { auth, createUserProfileDocument } from "./firebase/firebase.config";
+import { onSnapshot } from "firebase/firestore";
+import "./App.css";
+import { ClientContext } from "./context";
+import LoginPage from "./routes/login";
+import BottomNavBar from "./components/bottomNavBar";
+import ScanQRCode from "./routes/scanQR";
+import Profile from "./routes/profile";
+import Cart from "./routes/cart";
+import LoadingPage from "./routes/loading";
+import { Switch, Route } from "react-router-dom";
+import Home from "./routes/home";
 
 function App() {
   const context = useContext(ClientContext);
@@ -47,6 +48,7 @@ function App() {
       ) : (
         <div>
           <Switch>
+            <Route exact path="/" component={Home} />
             <Route exact path="/scanQr" component={ScanQRCode} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/profile" component={Profile} />
