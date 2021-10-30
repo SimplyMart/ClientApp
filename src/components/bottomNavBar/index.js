@@ -13,6 +13,7 @@ const Wrapper = styled.div`
   width: 100vw;
   display: flex;
   justify-content: space-evenly;
+  background: white;
   align-content: center;
   padding: 10px 0;
 `;
@@ -27,7 +28,7 @@ const NavDiv = styled.div`
   font-family: 'Sora', sans-serif;
   font-size: 15px;
   font-weight: 500;
-  ${(props) => (props.current ? `color: #1687D9;` : `color: #b1b1b1;`)}
+  ${(props) => (props.current ? `color: #2B2B2B	;` : `color: #b1b1b1;`)}
 `;
 
 const routes = [

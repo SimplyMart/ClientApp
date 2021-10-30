@@ -1,0 +1,35 @@
+.qrCode {
+  section {
+    border-radius: 15px;
+
+    div {
+      box-shadow: none !important;
+      position: relative;
+      border-radius: 10px;
+
+      &:before {
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 50%;
+        top: 0px;
+        left: 0px;
+        z-index: 1;
+        border-left: 0.5rem solid #fff;
+        border-top: 0.5rem solid #fff;
+      }
+
+      &:after {
+        position: absolute;
+        content: '';
+        width: 50%;
+        height: 50%;
+        right: 0px;
+        bottom: 0px;
+        z-index: 1;
+        border-right: 0.5rem solid #fff;
+        border-bottom: 0.5rem solid #fff;
+      }
+    }
+  }
+}
