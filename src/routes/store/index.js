@@ -1,10 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
 import styled from 'styled-components';
 import './styles.scss';
 import { ClientContext } from '../../context';
+import { useHistory } from 'react-router-dom';
 
 const Wrapper = styled.div`
-  padding: 30px 20px 70px;
+  padding-bottom: 70px;
   background-color: #f5f5f5;
   min-height: 100vh;
   text-align: center;
@@ -30,13 +31,21 @@ const Heading = styled.div`
   color: #2b2b2b;
 `;
 
-const HomePage = () => {
+const StorePage = () => {
+  const history = useHistory();
   const context = useContext(ClientContext);
+  const { activeStoreId } = context;
+
+  useEffect(() => {
+    if (!activeStoreId) {
+      history.push('/');
+    }
+  }, [activeStoreId]);
   return (
     <Wrapper>
-      <Heading>Visited Stores</Heading>
+        
     </Wrapper>
   );
 };
 
-export default HomePage;
+export default StorePage;

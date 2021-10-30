@@ -7,6 +7,8 @@ const ClientContext = createContext();
 const ClientProvider = ({ children }) => {
   const [user, setUser] = useState(() => auth.currentUser);
   const [initializing, setInitializing] = useState(true);
+  const [activeStoreId, setActiveStoreId] = useState(null);
+  const [activeStoreData, setActiveStoreData] = useState({});
   const [cartItems, setCartItems] = useState([
     {
       name: 'Lays',
@@ -25,6 +27,8 @@ const ClientProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
+    provider.addScope('profile');
+    provider.addScope('email');
     auth.useDeviceLanguage();
     try {
       await signInWithPopup(auth, provider);
@@ -52,6 +56,10 @@ const ClientProvider = ({ children }) => {
         signOutUser,
         cartItems,
         setCartItems,
+        activeStoreId,
+        setActiveStoreId,
+        activeStoreData,
+        setActiveStoreData,
       }}
     >
       {children}

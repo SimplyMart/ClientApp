@@ -4,6 +4,7 @@ import emptyCart from '../../assets/emptyCart.png';
 import './styles.scss';
 import { ClientContext } from '../../context';
 import CartItems from '../../components/cartItems/index';
+import StripeCheckoutButton from '../../components/PaymentButton';
 
 const Wrapper = styled.div`
   padding: 30px 20px 70px;
@@ -56,6 +57,7 @@ const Cart = () => {
           {cartItems.map((item, index) => (
             <CartItems key={index} {...item} />
           ))}
+          <StripeCheckoutButton price={500} />
         </>
       )}
     </Wrapper>

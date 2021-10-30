@@ -1,9 +1,11 @@
-import React, { useContext } from 'react';
+import React, { useContext, useState } from 'react';
 import './styles.scss';
-import { Input, Button } from 'antd';
-import { AiOutlineUser, AiOutlineLogout } from 'react-icons/ai';
+import { Input, Button, message } from 'antd';
+import { AiOutlineUser, AiOutlineLogout, AiOutlineMail } from 'react-icons/ai';
 import { GoDeviceMobile } from 'react-icons/go';
 import styled from 'styled-components';
+import { doc, updateDoc } from 'firebase/firestore';
+import { db } from '../../firebase/firebase.config';
 import { ClientContext } from '../../context';
 
 const { TextArea } = Input;
@@ -32,7 +34,8 @@ const StyledInput = styled(Input)`
   font-size: 18px;
   color: #2b2b2b;
 
-  &:focus, &:hover {
+  &:focus,
+  &:hover {
     border-color: #2b2b2b !important;
     box-shadow: none !important;
   }
@@ -65,12 +68,35 @@ const StyledLogoutButton = styled(Button)`
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 20px auto 0;
+  margin: 10px auto 0;
 
   &:hover,
   &:focus {
     color: white;
     background: #d22b2b;
+    border: 2px solid white;
+  }
+`;
+
+const StyledSubmitButton = styled(Button)`
+  width: 100%;
+  height: 60px;
+  border-radius: 40px;
+  font-family: 'Sora', sans-serif;
+  background: #50c878;
+  color: white;
+  font-size: 24px;
+  font-weight: 400;
+  border: 2px solid white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 20px auto 0;
+
+  &:hover,
+  &:focus {
+    color: white;
+    background: #50c878;
     border: 2px solid white;
   }
 `;
@@ -83,11 +109,38 @@ const StyledTextArea = styled(TextArea)`
   font-family: 'Sora', sans-serif;
   padding: 10px 15px;
   resize: none;
+
+  &:focus,
+  &:hover {
+    border-color: #2b2b2b !important;
+    box-shadow: none !important;
+  }
 `;
 
 const Profile = () => {
   const context = useContext(ClientContext);
   const { user, signOutUser } = context;
+  const [name, setName] = useState(user.displayName || '');
+  const [email, setEmail] = useState(user.email || '');
+  const [mobile, setMobile] = useState(user.mobile || '');
+  const [address, setAddress] = useState(user.address || '');
+
+  const handleSubmit = async () => {
+    const userRef = doc(db, 'users', `${user.id}`);
+
+    try {
+      await updateDoc(userRef, {
+        displayName : name,
+        mobile,
+        email,
+        address
+      });
+      message.success('Details Updated!!', 2.5);
+    } catch (error) {
+      console.log('Error creating the User', error.message);
+    }
+  };
+
   return (
     <Wrapper>
       <Heading>Profile</Heading>
@@ -98,13 +151,48 @@ const Profile = () => {
             : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fuser_149071&psig=AOvVaw1HG1DQcbPfBes46HpaaSgW&ust=1635694042865000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODI_qa58vMCFQAAAAAdAAAAABAD'
         }
       />
-      <StyledInput size="large" placeholder="Name" prefix={<AiOutlineUser />} />
       <StyledInput
         size="large"
+        value={name}
+        onChange={(e) => {
+          setName(e.target.value);
+        }}
+        placeholder="Name"
+        prefix={<AiOutlineUser />}
+      />
+      <StyledInput
+        value={email}
+        onChange={(e) => {
+          setEmail(e.target.value);
+        }}
+        size="large"
+        placeholder="Email"
+        prefix={<AiOutlineMail />}
+      />
+      <StyledInput
+        size="large"
+        value={mobile}
+        onChange={(e) => {
+          setMobile(e.target.value);
+        }}
         placeholder="Mobile Number"
         prefix={<GoDeviceMobile />}
       />
-      <StyledTextArea placeholder="Address" rows={4} />
+      <StyledTextArea
+        onChange={(e) => {
+          setAddress(e.target.value);
+        }}
+        value={address}
+        placeholder="Address"
+        rows={4}
+      />
+      <StyledSubmitButton
+        onClick={async () => {
+          await handleSubmit();
+        }}
+      >
+        Save Changes
+      </StyledSubmitButton>
       <StyledLogoutButton
         onClick={async () => {
           await signOutUser();
