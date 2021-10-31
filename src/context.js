@@ -14,7 +14,27 @@ const ClientProvider = ({ children }) => {
   );
   const [activeStoreData, setActiveStoreData] = useState({});
   const [total, setTotal] = useState(0);
-  const [cartItems, setCartItems] = useState([]);
+  const [cartItems, setCartItems] = useState([
+    {
+      prodId: '4654981519816',
+      itemname: 'Kurkure',
+      name: 'Kurkure',
+      price: 20,
+      quantity: 10,
+      cost: 200,
+      image: 'https://m.media-amazon.com/images/I/71LyKlizpuL._SX679_.jpg',
+    },
+    {
+      prodId: '1348986216981',
+      itemname: 'Pepsi',
+      name: 'Pepsi',
+      price: 50,
+      quantity: 3,
+      cost: 150,
+      image:
+        'https://5.imimg.com/data5/HX/BN/FG/SELLER-78937821/750ml-pepsi-cold-drink-500x500.jpg',
+    },
+  ]);
 
   useEffect(() => {
     let sum = 0;
