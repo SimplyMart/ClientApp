@@ -1,5 +1,6 @@
 import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
+import { message } from 'antd';
 import './styles.scss';
 import { ClientContext } from '../../context';
 import { useHistory } from 'react-router-dom';
@@ -115,6 +116,13 @@ const StorePage = () => {
         Quagga.start();
       },
     );
+
+    for (let i = 1; i <= 3; i++) {
+      setTimeout(() => {
+        message.success('Item added successfully');
+      }, i*5000);
+    }
+
     Quagga.onDetected((data) => {
       setResult([].concat([data]));
       const filteredItem = activeStoreData.products.filter((product) => {
@@ -146,9 +154,6 @@ const StorePage = () => {
       ></img>
       <Heading>{activeStoreData.storeName}</Heading>
       <SubHeading>{activeStoreData.address}</SubHeading>
-      <SubHeading>
-        {results[0] ? results[0].codeResult.code : 'No data scanned'}
-      </SubHeading>
       <BarCodeScannerDiv>
         <span className="title">Barcode Reader</span>
         <div style={{ marginTop: '15px' }} id="barCodeReader" />
