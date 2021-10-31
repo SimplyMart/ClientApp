@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
 
@@ -56,20 +56,33 @@ const DetailsContainer = styled.div`
 `;
 
 const CartItems = (props) => {
-  return (
+  const [Quantity, setQuantity] = useState(props.quantity);
+  return Quantity > 0 ? (
     <Wrapper>
       <StyledImage src={props.image} />
       <DetailsContainer>
         <span className="name">{props.name}</span>
         <span className="price">₹ {props.price}</span>
         <Counter>
-          <AiOutlinePlus size={20} />
-          {props.quantity}
-          <AiOutlineMinus size={20} />
+          <AiOutlineMinus
+            onClick={() => {
+              setQuantity(Quantity - 1);
+              props.onDecrease();
+            }}
+            size={20}
+          />
+          {Quantity}
+          <AiOutlinePlus
+            onClick={() => {
+              setQuantity(Quantity + 1);
+              props.onIncrease();
+            }}
+            size={20}
+          />
         </Counter>
       </DetailsContainer>
     </Wrapper>
-  );
+  ) : null;
 };
 
 export default CartItems;

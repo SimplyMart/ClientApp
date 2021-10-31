@@ -9,7 +9,7 @@ import Store3 from "../../assets/store3.jpg";
 import Store4 from "../../assets/store4.jpg";
 
 const Wrapper = styled.div`
-  padding: 30px 20px 70px;
+  padding: 30px 20px 110px;
   background-color: #f5f5f5;
   min-height: 100vh;
   text-align: center;

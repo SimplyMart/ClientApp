@@ -39,9 +39,18 @@ const Heading = styled.div`
   color: #2b2b2b;
 `;
 
+const TotalAmount = styled.span`
+  font-family: 'Sora', sans-serif;
+  font-size: 20px;
+  font-weight: 600;
+  color: #2b2b2b;
+  margin-bottom: 5px;
+`;
+
 const Cart = () => {
   const context = useContext(ClientContext);
-  const { cartItems } = context;
+  const { cartItems, setCartItems } = context;
+  
   return (
     <Wrapper>
       {cartItems.length === 0 ? (
@@ -54,10 +63,49 @@ const Cart = () => {
       ) : (
         <>
           <Heading>Cart</Heading>
-          {cartItems.map((item, index) => (
-            <CartItems key={index} {...item} />
-          ))}
-          <StripeCheckoutButton price={500} />
+          <div
+            style={{
+              maxHeight: '62vh',
+              overflowX: 'auto',
+              marginBottom: '15px',
+            }}
+          >
+            {cartItems.map((item, index) => (
+              <CartItems
+                key={index}
+                onIncrease={() => {
+                  let modifiedCartItems = cartItems;
+                  let selectedItem = cartItems[index];
+                  selectedItem.quantity = selectedItem.quantity + 1;
+                  modifiedCartItems[index] = selectedItem;
+                  setCartItems(modifiedCartItems);
+                }}
+                onDecrease={() => {
+                  let modifiedCartItems = cartItems;
+                  let selectedItem = cartItems[index];
+                  selectedItem.quantity = selectedItem.quantity - 1;
+                  if (selectedItem.quantity === 0) {
+                    modifiedCartItems.splice(index, 1);
+                  } else {
+                    modifiedCartItems[index] = selectedItem;
+                  }
+                  setCartItems(modifiedCartItems);
+                }}
+                {...item}
+              />
+            ))}
+          </div>
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'space-between',
+              maxWidth: '95%',
+              margin: 'auto',
+            }}
+          >
+            <StripeCheckoutButton price={500} />
+            <TotalAmount>₹ 5000</TotalAmount>
+          </div>
         </>
       )}
     </Wrapper>
