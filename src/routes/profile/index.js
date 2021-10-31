@@ -1,12 +1,12 @@
-import React, { useContext, useState } from 'react';
-import './styles.scss';
-import { Input, Button, message } from 'antd';
-import { AiOutlineUser, AiOutlineLogout, AiOutlineMail } from 'react-icons/ai';
-import { GoDeviceMobile } from 'react-icons/go';
-import styled from 'styled-components';
-import { doc, updateDoc } from 'firebase/firestore';
-import { db } from '../../firebase/firebase.config';
-import { ClientContext } from '../../context';
+import React, { useContext, useState } from "react";
+import "./styles.scss";
+import { Input, Button, message } from "antd";
+import { AiOutlineUser, AiOutlineLogout, AiOutlineMail } from "react-icons/ai";
+import { GoDeviceMobile } from "react-icons/go";
+import styled from "styled-components";
+import { doc, updateDoc } from "firebase/firestore";
+import { db } from "../../firebase/firebase.config";
+import { ClientContext } from "../../context";
 
 const { TextArea } = Input;
 
@@ -26,9 +26,9 @@ const StyledImage = styled.img`
 `;
 
 const StyledInput = styled(Input)`
-  border-radius: 10px;
-  font-family: 'Sora', sans-serif;
-  border: 2px solid #2b2b2b;
+  border-radius: 5px;
+  font-family: "Sora", sans-serif;
+  border-bottom: 3px solid #23234c;
   margin-bottom: 20px;
   height: 50px;
   font-size: 18px;
@@ -48,7 +48,7 @@ const StyledInput = styled(Input)`
 const Heading = styled.div`
   width: 100%;
   padding: 0 20px 20px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 35px;
   font-weight: 900;
   margin: auto;
@@ -59,7 +59,7 @@ const StyledLogoutButton = styled(Button)`
   width: 100%;
   height: 60px;
   border-radius: 40px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   background: #d22b2b;
   color: white;
   font-size: 24px;
@@ -82,7 +82,7 @@ const StyledSubmitButton = styled(Button)`
   width: 100%;
   height: 60px;
   border-radius: 40px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   background: #50c878;
   color: white;
   font-size: 24px;
@@ -105,8 +105,9 @@ const StyledTextArea = styled(TextArea)`
   font-size: 18px;
   color: #2b2b2b;
   border-radius: 10px;
-  border: 2px solid #2b2b2b;
-  font-family: 'Sora', sans-serif;
+  ${"" /* border: 2px solid #2b2b2b; */}
+  border-bottom: 3px solid #23234c;
+  font-family: "Sora", sans-serif;
   padding: 10px 15px;
   resize: none;
 
@@ -120,24 +121,24 @@ const StyledTextArea = styled(TextArea)`
 const Profile = () => {
   const context = useContext(ClientContext);
   const { user, signOutUser } = context;
-  const [name, setName] = useState(user.displayName || '');
-  const [email, setEmail] = useState(user.email || '');
-  const [mobile, setMobile] = useState(user.mobile || '');
-  const [address, setAddress] = useState(user.address || '');
+  const [name, setName] = useState(user.displayName || "");
+  const [email, setEmail] = useState(user.email || "");
+  const [mobile, setMobile] = useState(user.mobile || "");
+  const [address, setAddress] = useState(user.address || "");
 
   const handleSubmit = async () => {
-    const userRef = doc(db, 'users', `${user.id}`);
+    const userRef = doc(db, "users", `${user.id}`);
 
     try {
       await updateDoc(userRef, {
-        displayName : name,
+        displayName: name,
         mobile,
         email,
-        address
+        address,
       });
-      message.success('Details Updated!!', 2.5);
+      message.success("Details Updated!!", 2.5);
     } catch (error) {
-      console.log('Error creating the User', error.message);
+      console.log("Error creating the User", error.message);
     }
   };
 
@@ -148,7 +149,7 @@ const Profile = () => {
         src={
           user.userImage
             ? user.userImage
-            : 'https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fuser_149071&psig=AOvVaw1HG1DQcbPfBes46HpaaSgW&ust=1635694042865000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODI_qa58vMCFQAAAAAdAAAAABAD'
+            : "https://www.google.com/url?sa=i&url=https%3A%2F%2Fwww.flaticon.com%2Ffree-icon%2Fuser_149071&psig=AOvVaw1HG1DQcbPfBes46HpaaSgW&ust=1635694042865000&source=images&cd=vfe&ved=0CAsQjRxqFwoTCODI_qa58vMCFQAAAAAdAAAAABAD"
         }
       />
       <StyledInput
@@ -158,7 +159,7 @@ const Profile = () => {
           setName(e.target.value);
         }}
         placeholder="Name"
-        prefix={<AiOutlineUser />}
+        prefix={<AiOutlineUser style={{ color: "#23234c" }} />}
       />
       <StyledInput
         value={email}
@@ -167,7 +168,7 @@ const Profile = () => {
         }}
         size="large"
         placeholder="Email"
-        prefix={<AiOutlineMail />}
+        prefix={<AiOutlineMail style={{ color: "#23234c" }} />}
       />
       <StyledInput
         size="large"
@@ -176,7 +177,7 @@ const Profile = () => {
           setMobile(e.target.value);
         }}
         placeholder="Mobile Number"
-        prefix={<GoDeviceMobile />}
+        prefix={<GoDeviceMobile style={{ color: "#23234c" }} />}
       />
       <StyledTextArea
         onChange={(e) => {

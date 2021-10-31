@@ -1,6 +1,6 @@
-import React, { useState, createContext } from 'react';
-import { auth } from './firebase/firebase.config';
-import { GoogleAuthProvider, signInWithPopup, signOut } from 'firebase/auth';
+import React, { useState, createContext } from "react";
+import { auth } from "./firebase/firebase.config";
+import { GoogleAuthProvider, signInWithPopup, signOut } from "firebase/auth";
 
 const ClientContext = createContext();
 
@@ -11,17 +11,23 @@ const ClientProvider = ({ children }) => {
   const [activeStoreData, setActiveStoreData] = useState({});
   const [cartItems, setCartItems] = useState([
     {
-      name: 'Lays',
-      price: '20',
+      name: "Lays",
+      price: "20",
       quantity: 1,
-      image: 'https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg',
+      image: "https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg",
     },
     {
-      name: 'Frooti',
-      price: '25',
+      name: "Frooti",
+      price: "25",
       quantity: 12,
       image:
-        'https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg',
+        "https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg",
+    },
+    {
+      name: "Oreo",
+      price: "30",
+      quantity: 6,
+      image: "https://m.media-amazon.com/images/I/41jIwADFjqL.jpg",
     },
     {
       name: 'Lays',
@@ -53,8 +59,8 @@ const ClientProvider = ({ children }) => {
 
   const signInWithGoogle = async () => {
     const provider = new GoogleAuthProvider();
-    provider.addScope('profile');
-    provider.addScope('email');
+    provider.addScope("profile");
+    provider.addScope("email");
     auth.useDeviceLanguage();
     try {
       await signInWithPopup(auth, provider);
