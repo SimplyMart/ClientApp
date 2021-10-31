@@ -117,15 +117,17 @@ const StorePage = () => {
     );
     Quagga.onDetected((data) => {
       setResult([].concat([data]));
-       const filteredItem = activeStoreData.products.filter((product) => {
-         return product.prodId === data.codeResult.code;
-       });
-       let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
-       modifiedCartItems.push(filteredItem[0]);
-       setCartItems(modifiedCartItems);
+      const filteredItem = activeStoreData.products.filter((product) => {
+        return product.prodId === data.codeResult.code;
+      });
+      let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
+      if (filteredItem.length > 0) {
+        modifiedCartItems.push(filteredItem[0]);
+      }
+      setCartItems(modifiedCartItems);
 
-      const audio = new Audio('../../assets/beep.mp3');
-      audio.play();
+      // const audio = new Audio('../../assets/beep.mp3');
+      // audio.play();
     });
   }, []);
 
