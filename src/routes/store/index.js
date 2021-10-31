@@ -54,17 +54,6 @@ const StorePage = () => {
   const [results, setResult] = useState([]);
 
   useEffect(() => {
-    if (results && results[0]) {
-      const filteredItem = activeStoreData.products.filter((product) => {
-        return product.prodId == results[0].codeResult.code;
-      });
-      let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
-      modifiedCartItems.push(filteredItem[0]);
-      setCartItems(modifiedCartItems);
-    }
-  }, [results]);
-
-  useEffect(() => {
     Quagga.init(
       {
         inputStream: {
@@ -128,6 +117,12 @@ const StorePage = () => {
     );
     Quagga.onDetected((data) => {
       setResult([].concat([data]));
+       const filteredItem = activeStoreData.products.filter((product) => {
+         return product.prodId === data.codeResult.code;
+       });
+       let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
+       modifiedCartItems.push(filteredItem[0]);
+       setCartItems(modifiedCartItems);
 
       const audio = new Audio('../../assets/beep.mp3');
       audio.play();
