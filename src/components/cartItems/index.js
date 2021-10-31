@@ -67,7 +67,7 @@ const CartItems = (props) => {
           <AiOutlineMinus
             onClick={() => {
               setQuantity(Quantity - 1);
-              props.onDecrease();
+              props.Decrease();
             }}
             size={20}
           />
@@ -75,7 +75,7 @@ const CartItems = (props) => {
           <AiOutlinePlus
             onClick={() => {
               setQuantity(Quantity + 1);
-              props.onIncrease();
+              props.Increase();
             }}
             size={20}
           />

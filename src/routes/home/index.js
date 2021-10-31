@@ -15,15 +15,6 @@ const Wrapper = styled.div`
   text-align: center;
 `;
 
-const SubHeading = styled.div`
-  width: 100%;
-  padding: 0 20px 30px;
-  font-family: "Sora", sans-serif;
-  font-size: 20px;
-  font-weight: 400;
-  margin: 0 auto 0;
-  color: #a9a9a9;
-`;
 
 const Heading = styled.div`
   width: 100%;
@@ -36,7 +27,6 @@ const Heading = styled.div`
 `;
 
 const HomePage = () => {
-  const context = useContext(ClientContext);
   const { Meta } = Card;
   return (
     <Wrapper>

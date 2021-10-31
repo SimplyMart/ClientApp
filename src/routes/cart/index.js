@@ -49,8 +49,8 @@ const TotalAmount = styled.span`
 
 const Cart = () => {
   const context = useContext(ClientContext);
-  const { cartItems, setCartItems } = context;
-  
+  const { cartItems, setCartItems, total } = context;
+
   return (
     <Wrapper>
       {cartItems.length === 0 ? (
@@ -73,21 +73,22 @@ const Cart = () => {
             {cartItems.map((item, index) => (
               <CartItems
                 key={index}
-                onIncrease={() => {
-                  let modifiedCartItems = cartItems;
-                  let selectedItem = cartItems[index];
-                  selectedItem.quantity = selectedItem.quantity + 1;
-                  modifiedCartItems[index] = selectedItem;
+                Increase={() => {
+                  let modifiedCartItems = cartItems.map((l) =>
+                    Object.assign({}, l),
+                  );
+                  modifiedCartItems[index].quantity =
+                    modifiedCartItems[index].quantity + 1;
                   setCartItems(modifiedCartItems);
                 }}
-                onDecrease={() => {
-                  let modifiedCartItems = cartItems;
-                  let selectedItem = cartItems[index];
-                  selectedItem.quantity = selectedItem.quantity - 1;
-                  if (selectedItem.quantity === 0) {
+                Decrease={() => {
+                  let modifiedCartItems = cartItems.map((l) =>
+                    Object.assign({}, l),
+                  );
+                  modifiedCartItems[index].quantity =
+                    modifiedCartItems[index].quantity - 1;
+                  if (modifiedCartItems[index].quantity === 0) {
                     modifiedCartItems.splice(index, 1);
-                  } else {
-                    modifiedCartItems[index] = selectedItem;
                   }
                   setCartItems(modifiedCartItems);
                 }}
@@ -103,8 +104,8 @@ const Cart = () => {
               margin: 'auto',
             }}
           >
-            <StripeCheckoutButton price={500} />
-            <TotalAmount>₹ 5000</TotalAmount>
+            <StripeCheckoutButton price={total} />
+            <TotalAmount>₹ {total}</TotalAmount>
           </div>
         </>
       )}
