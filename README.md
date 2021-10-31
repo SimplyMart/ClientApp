@@ -65,15 +65,16 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 # ScreenShots
 
 ## User login/Signup
-
+![image](https://user-images.githubusercontent.com/61985499/139576356-6aa7b964-143b-44ca-8840-2f7403485e51.png)
 
 ## Scan QR code (Scan the QR code of the store visiting)
-
+![image](https://user-images.githubusercontent.com/61985499/139576414-96d45f45-0ac9-4ebd-989d-a0869ba348cd.png)
 
 ## Home Page(Visited Stores)
-
+![image](https://user-images.githubusercontent.com/61985499/139576378-f422c4fd-78c9-4dc9-963a-1ff1146146ed.png)
 
 ## Store details and Bar Code (to scan bar codes of the items)
+![image](https://user-images.githubusercontent.com/61985499/139576447-f1d4f34b-56b3-4e90-b505-4d95a3fea264.png)
 
 
 ## Cart Page
