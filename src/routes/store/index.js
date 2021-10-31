@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useContext, useEffect, useState } from 'react';
 import styled from 'styled-components';
 import './styles.scss';
 import { ClientContext } from '../../context';
@@ -51,6 +51,7 @@ const StorePage = () => {
   const history = useHistory();
   const context = useContext(ClientContext);
   const { activeStoreId, activeStoreData } = context;
+  const [results, setResult] = useState([]);
 
   useEffect(() => {
     Quagga.init(
@@ -106,6 +107,7 @@ const StorePage = () => {
     );
     Quagga.onDetected((data) => {
       console.log(data);
+      setResult(data);
     });
   }, []);
 
@@ -123,6 +125,7 @@ const StorePage = () => {
       ></img>
       <Heading>{activeStoreData.storeName}</Heading>
       <SubHeading>{activeStoreData.address}</SubHeading>
+      <SubHeading>{results[0] ? results[0].codeResult.code : 'No data scanned'}</SubHeading>
       <BarCodeScannerDiv>
         <span className="title">Barcode Reader</span>
         <div style={{ marginTop: '15px' }} id="barCodeReader" />
