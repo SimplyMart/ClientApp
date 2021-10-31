@@ -1,12 +1,6 @@
-<<<<<<< HEAD
 import React, { useState } from 'react';
 import styled from 'styled-components';
 import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
-=======
-import React from "react";
-import styled from "styled-components";
-import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
->>>>>>> 631c8e0886db99e141a2052139f30374d81f2c92
 
 const Wrapper = styled.div`
   width: 100%;
