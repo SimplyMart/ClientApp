@@ -1,6 +1,6 @@
-import React from 'react';
-import styled from 'styled-components';
-import { AiOutlinePlus, AiOutlineMinus } from 'react-icons/ai';
+import React from "react";
+import styled from "styled-components";
+import { AiOutlinePlus, AiOutlineMinus } from "react-icons/ai";
 
 const Wrapper = styled.div`
   width: 100%;
@@ -39,7 +39,7 @@ const DetailsContainer = styled.div`
   align-items: flex-end;
 
   .name {
-    font-family: 'Sora', sans-serif;
+    font-family: "Sora", sans-serif;
     font-size: 20px;
     font-weight: 500;
     color: #2b2b2b;
@@ -47,7 +47,7 @@ const DetailsContainer = styled.div`
   }
 
   .price {
-    font-family: 'Sora', sans-serif;
+    font-family: "Sora", sans-serif;
     font-size: 20px;
     font-weight: 600;
     color: #2b2b2b;
@@ -57,7 +57,7 @@ const DetailsContainer = styled.div`
 
 const CartItems = (props) => {
   return (
-    <Wrapper>
+    <Wrapper style={{ marginBottom: "5px", border: "1px solid #bdbdbd" }}>
       <StyledImage src={props.image} />
       <DetailsContainer>
         <span className="name">{props.name}</span>
