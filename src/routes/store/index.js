@@ -107,7 +107,7 @@ const StorePage = () => {
     );
     Quagga.onDetected((data) => {
       console.log(data);
-      setResult(data);
+      setResult([].concat([data]));
     });
   }, []);
 
@@ -125,7 +125,9 @@ const StorePage = () => {
       ></img>
       <Heading>{activeStoreData.storeName}</Heading>
       <SubHeading>{activeStoreData.address}</SubHeading>
-      <SubHeading>{results[0] ? results[0].codeResult.code : 'No data scanned'}</SubHeading>
+      <SubHeading>
+        {results[0] ? results[0].codeResult.code : 'No data scanned'}
+      </SubHeading>
       <BarCodeScannerDiv>
         <span className="title">Barcode Reader</span>
         <div style={{ marginTop: '15px' }} id="barCodeReader" />
