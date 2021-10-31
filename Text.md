@@ -12,8 +12,8 @@ We have submitted an organisation link consisting of 2 repositories:
 
 - Store Admin Panel
   - Admin login/signup.
-  - Payments page.
-  - Products page to update stock of products.
+  - Payments page to display all the payments that has been made.
+  - Products page to dispaly and update stock of products accordingly.
   - QR Page to display the QR code of the store.
   - Profile page.
 
