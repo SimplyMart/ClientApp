@@ -53,7 +53,7 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 
 # Built With
 
-- HTLM
+- HTML
 - CSS
 - SASS
 - ReactJs
