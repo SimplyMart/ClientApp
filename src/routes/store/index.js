@@ -54,10 +54,14 @@ const StorePage = () => {
   const [results, setResult] = useState([]);
 
   useEffect(() => {
-    const filteredItem = activeStoreData.products.filter((product) => {
-      return product.prodId == results[0].codeResult.code;
-    });
-    setCartItems([...cartItems, ...filteredItem]);
+    if (results && results[0]) {
+      const filteredItem = activeStoreData.products.filter((product) => {
+        return product.prodId == results[0].codeResult.code;
+      });
+      let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
+      modifiedCartItems.push(filteredItem[0]);
+      setCartItems(modifiedCartItems);
+    }
   }, [results]);
 
   useEffect(() => {
