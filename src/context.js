@@ -16,23 +16,34 @@ const ClientProvider = ({ children }) => {
   const [total, setTotal] = useState(0);
   const [cartItems, setCartItems] = useState([
     {
-      prodId: '4654981519816',
-      itemname: 'Kurkure',
-      name: 'Kurkure',
+      prodId: '7622201149437',
+      itemname: 'Dairy Milk',
+      name: 'Dairy Milk',
       price: 20,
-      quantity: 10,
-      cost: 200,
-      image: 'https://m.media-amazon.com/images/I/71LyKlizpuL._SX679_.jpg',
+      quantity: 5,
+      cost: 100,
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/simplymart-8324e.appspot.com/o/stores%2Fproducts%2F7622201149437?alt=media&token=b82769fe-f574-40fe-9704-96a0a7845c65',
     },
     {
-      prodId: '1348986216981',
-      itemname: 'Pepsi',
-      name: 'Pepsi',
-      price: 50,
-      quantity: 3,
-      cost: 150,
+      prodId: '8901262060011',
+      itemname: 'Amul Cheese Spread',
+      name: 'Amul Cheese Spread',
+      price: 120,
+      quantity: 2,
+      cost: 240,
       image:
-        'https://5.imimg.com/data5/HX/BN/FG/SELLER-78937821/750ml-pepsi-cold-drink-500x500.jpg',
+        'https://firebasestorage.googleapis.com/v0/b/simplymart-8324e.appspot.com/o/stores%2Fproducts%2F8901262060011?alt=media&token=3abf9c54-ba5e-4201-8f79-c90db2ef438f',
+    },
+    {
+      prodId: '8901262060011',
+      itemname: 'Godrej Room Freshner',
+      name: 'Godrej Room Freshner',
+      price: 220,
+      quantity: 3,
+      cost: 660,
+      image:
+        'https://firebasestorage.googleapis.com/v0/b/simplymart-8324e.appspot.com/o/stores%2Fproducts%2F8901023018404?alt=media&token=1305f100-8125-42e8-8942-c5dc04aa1406',
     },
   ]);
 
