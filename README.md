@@ -65,23 +65,27 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 # ScreenShots
 
 ## User login/Signup
-![image](https://user-images.githubusercontent.com/61985499/139576356-6aa7b964-143b-44ca-8840-2f7403485e51.png)
+![image](https://user-images.githubusercontent.com/61985499/139577414-4cf97a40-3a91-4850-9d32-204419784c85.png)
 
 ## Scan QR code (Scan the QR code of the store visiting)
-![image](https://user-images.githubusercontent.com/61985499/139576414-96d45f45-0ac9-4ebd-989d-a0869ba348cd.png)
+![image](https://user-images.githubusercontent.com/61985499/139577423-1d8aa4bf-30b9-4591-96a3-9ab7738ee15d.png)
 
 ## Home Page(Visited Stores)
-![image](https://user-images.githubusercontent.com/61985499/139576378-f422c4fd-78c9-4dc9-963a-1ff1146146ed.png)
+![image](https://user-images.githubusercontent.com/61985499/139577438-8c2a77ae-d9ba-47e1-a8b6-d0e559f5a896.png)
 
 ## Store details and Bar Code (to scan bar codes of the items)
-![image](https://user-images.githubusercontent.com/61985499/139576447-f1d4f34b-56b3-4e90-b505-4d95a3fea264.png)
+![image](https://user-images.githubusercontent.com/61985499/139577456-2368259d-bf68-4438-91d2-e0dab8f82406.png)
 
+![image](https://user-images.githubusercontent.com/61985499/139577461-e6819915-9f3b-4352-b2fa-66b85a3d1ba4.png)
 
 ## Cart Page
+![image](https://user-images.githubusercontent.com/61985499/139577472-8e0f908b-8872-4fd7-a4a2-4dd4657724b4.png)
 
+## Payment Page
+![image](https://user-images.githubusercontent.com/61985499/139577498-d9714a55-29b0-493c-a554-6ccd5b4242f5.png)
 
 ## Profile Page
-
+![image](https://user-images.githubusercontent.com/61985499/139577481-cc75900e-2b61-43d7-997b-0b937c797f32.png)
 
 
 # FAQs
