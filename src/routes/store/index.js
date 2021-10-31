@@ -1,8 +1,8 @@
-import React, { useContext, useEffect } from 'react';
-import styled from 'styled-components';
-import './styles.scss';
-import { ClientContext } from '../../context';
-import { useHistory } from 'react-router-dom';
+import React, { useContext, useEffect } from "react";
+import styled from "styled-components";
+import "./styles.scss";
+import { ClientContext } from "../../context";
+import { useHistory } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding-bottom: 70px;
@@ -14,7 +14,7 @@ const Wrapper = styled.div`
 const SubHeading = styled.div`
   width: 100%;
   padding: 0 20px 30px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 20px;
   font-weight: 400;
   margin: 0 auto 0;
@@ -24,7 +24,7 @@ const SubHeading = styled.div`
 const Heading = styled.div`
   width: 100%;
   padding: 10px 20px 20px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 35px;
   font-weight: 900;
   margin: auto;
@@ -36,14 +36,22 @@ const StorePage = () => {
   const context = useContext(ClientContext);
   const { activeStoreId } = context;
 
-  useEffect(() => {
-    if (!activeStoreId) {
-      history.push('/');
-    }
-  }, [activeStoreId]);
+  // useEffect(() => {
+  //   if (!activeStoreId) {
+  //     history.push("/");
+  //   }
+  // }, [activeStoreId]);
   return (
     <Wrapper>
-        
+      <img
+        style={{ height: "100%", width: "100%" }}
+        alt="store name"
+        src="https://i.pinimg.com/originals/0a/1a/70/0a1a70b86a388d47440d928630cf6c51.jpg"
+      ></img>
+      <Heading>Store name</Heading>
+      <SubHeading>
+        Neque porro quisquam est qui dolorem ipsum quia dolor sit amet
+      </SubHeading>
     </Wrapper>
   );
 };

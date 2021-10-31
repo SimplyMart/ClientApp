@@ -7,6 +7,7 @@ import Store1 from "../../assets/store1.jpg";
 import Store2 from "../../assets/store2.jpg";
 import Store3 from "../../assets/store3.jpg";
 import Store4 from "../../assets/store4.jpg";
+import { useHistory } from "react-router-dom";
 
 const Wrapper = styled.div`
   padding: 30px 20px 110px;
@@ -14,7 +15,6 @@ const Wrapper = styled.div`
   min-height: 100vh;
   text-align: center;
 `;
-
 
 const Heading = styled.div`
   width: 100%;
@@ -27,11 +27,16 @@ const Heading = styled.div`
 `;
 
 const HomePage = () => {
+  const context = useContext(ClientContext);
+  const history = useHistory();
   const { Meta } = Card;
   return (
     <Wrapper>
       <Heading>Visited Stores</Heading>
       <Card
+        onClick={() => {
+          history.push("/store");
+        }}
         style={{
           width: "100%",
           marginTop: 16,
