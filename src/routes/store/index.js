@@ -50,7 +50,7 @@ const Heading = styled.div`
 const StorePage = () => {
   const history = useHistory();
   const context = useContext(ClientContext);
-  const { activeStoreId, activeStoreData } = context;
+  const { activeStoreId, activeStoreData, cartItems, setCartItems } = context;
   const [results, setResult] = useState([]);
 
   useEffect(() => {
@@ -86,7 +86,17 @@ const StorePage = () => {
         },
         numOfWorkers: 4,
         decoder: {
-          readers: ['code_128_reader'],
+          readers: [
+            'code_128_reader',
+            {
+              format: 'ean_reader',
+              config: {
+                supplements: ['ean_5_reader', 'ean_2_reader'],
+              },
+            },
+            'ean_8_reader',
+            'upc_reader',
+          ],
           debug: {
             drawBoundingBox: true,
             showFrequency: true,
@@ -106,8 +116,14 @@ const StorePage = () => {
       },
     );
     Quagga.onDetected((data) => {
-      console.log(data);
       setResult([].concat([data]));
+
+      const audio = new Audio('../../assets/beep.mp3');
+      audio.play();
+      const filteredItem = activeStoreData.products.filter((product) => {
+        return product.prodId === results[0].codeResult.code;
+      });
+      setCartItems([...cartItems, ...filteredItem]);
     });
   }, []);
 
@@ -116,6 +132,7 @@ const StorePage = () => {
       history.push('/');
     }
   }, [activeStoreId]);
+
   return (
     <Wrapper>
       <img

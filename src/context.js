@@ -14,53 +14,7 @@ const ClientProvider = ({ children }) => {
   );
   const [activeStoreData, setActiveStoreData] = useState({});
   const [total, setTotal] = useState(0);
-  const [cartItems, setCartItems] = useState([
-    {
-      name: 'Lays',
-      price: '20',
-      quantity: 8,
-      image: 'https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg',
-    },
-    {
-      name: 'Frooti',
-      price: '25',
-      quantity: 4,
-      image:
-        'https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg',
-    },
-    {
-      name: 'Oreo',
-      price: '30',
-      quantity: 6,
-      image: 'https://m.media-amazon.com/images/I/41jIwADFjqL.jpg',
-    },
-    {
-      name: 'Lays',
-      price: '50',
-      quantity: 2,
-      image: 'https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg',
-    },
-    {
-      name: 'Frooti',
-      price: '25',
-      quantity: 8,
-      image:
-        'https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg',
-    },
-    {
-      name: 'Lays',
-      price: '20',
-      quantity: 5,
-      image: 'https://m.media-amazon.com/images/I/81vJyb43URL._SL1500_.jpg',
-    },
-    {
-      name: 'Frooti',
-      price: '25',
-      quantity: 2,
-      image:
-        'https://www.bigbasket.com/media/uploads/p/l/265689-2_5-frooti-drink-fresh-n-juicy-mango.jpg',
-    },
-  ]);
+  const [cartItems, setCartItems] = useState([]);
 
   useEffect(() => {
     let sum = 0;
