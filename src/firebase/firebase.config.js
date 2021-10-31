@@ -27,8 +27,6 @@ export const db = getFirestore(app);
 export const createUserProfileDocument = async (userAuth, additionalData = {}) => {
   if (!userAuth) return;
 
-  console.log(userAuth);
-
   const userRef = doc(db, 'users', `${userAuth.uid}`);
 
   const snapShot = await getDoc(userRef);
@@ -42,6 +40,8 @@ export const createUserProfileDocument = async (userAuth, additionalData = {}) =
         displayName,
         email,
         createdAt,
+        visitedStores: [],
+        payments: [],
         userImage: photoURL,
         ...additionalData,
       });

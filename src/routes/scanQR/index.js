@@ -1,6 +1,8 @@
-import React, { useState } from 'react';
+import React, { useContext } from 'react';
 import QrReader from 'react-qr-reader';
 import styled from 'styled-components';
+import { ClientContext } from '../../context';
+import { useHistory } from 'react-router-dom';
 import './styles.scss';
 
 const Wrapper = styled.div`
@@ -32,13 +34,17 @@ const SubHeading = styled.div`
 `;
 
 const ScanQRCode = () => {
-  const [qrCodeResult, setQrCodeResult] = useState(null);
+  const history = useHistory();
+  const context = useContext(ClientContext);
+  const { setActiveStoreId } = context;
 
   const handleScan = (data) => {
     if (data) {
-      setQrCodeResult(data);
+      setActiveStoreId(data);
+      history.push('/store');
     }
   };
+
   const handleError = (err) => {
     console.error(err);
   };
@@ -60,7 +66,6 @@ const ScanQRCode = () => {
         <SubHeading style={{marginTop: '30px'}}>
           Note: Place the QR code in the highlighted square
         </SubHeading>
-        <h5>{qrCodeResult}</h5>
     </Wrapper>
   );
 };
