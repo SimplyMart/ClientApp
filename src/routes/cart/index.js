@@ -1,10 +1,10 @@
-import React, { useContext } from 'react';
-import styled from 'styled-components';
-import emptyCart from '../../assets/emptyCart.png';
-import './styles.scss';
-import { ClientContext } from '../../context';
-import CartItems from '../../components/cartItems/index';
-import StripeCheckoutButton from '../../components/PaymentButton';
+import React, { useContext } from "react";
+import styled from "styled-components";
+import emptyCart from "../../assets/emptyCart.png";
+import "./styles.scss";
+import { ClientContext } from "../../context";
+import CartItems from "../../components/cartItems/index";
+import StripeCheckoutButton from "../../components/PaymentButton";
 
 const Wrapper = styled.div`
   padding: 30px 20px 70px;
@@ -22,7 +22,7 @@ const StyledImage = styled.img`
 const SubHeading = styled.div`
   width: 100%;
   padding: 0 20px 30px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 20px;
   font-weight: 400;
   margin: 0 auto 0;
@@ -32,7 +32,7 @@ const SubHeading = styled.div`
 const Heading = styled.div`
   width: 100%;
   padding: 10px 20px 20px;
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 35px;
   font-weight: 900;
   margin: auto;
@@ -40,7 +40,7 @@ const Heading = styled.div`
 `;
 
 const TotalAmount = styled.span`
-  font-family: 'Sora', sans-serif;
+  font-family: "Sora", sans-serif;
   font-size: 20px;
   font-weight: 600;
   color: #2b2b2b;
@@ -50,13 +50,13 @@ const TotalAmount = styled.span`
 const Cart = () => {
   const context = useContext(ClientContext);
   const { cartItems, setCartItems } = context;
-  
+
   return (
     <Wrapper>
       {cartItems.length === 0 ? (
         <>
           <StyledImage src={emptyCart} />
-          <SubHeading style={{ marginTop: '30px', marginBottom: '70px' }}>
+          <SubHeading style={{ marginTop: "30px", marginBottom: "70px" }}>
             Add new items in cart by scanning their barcode
           </SubHeading>
         </>
@@ -65,9 +65,9 @@ const Cart = () => {
           <Heading>Cart</Heading>
           <div
             style={{
-              maxHeight: '62vh',
-              overflowX: 'auto',
-              marginBottom: '15px',
+              maxHeight: "62vh",
+              overflowX: "auto",
+              marginBottom: "15px",
             }}
           >
             {cartItems.map((item, index) => (
@@ -97,10 +97,10 @@ const Cart = () => {
           </div>
           <div
             style={{
-              display: 'flex',
-              justifyContent: 'space-between',
-              maxWidth: '95%',
-              margin: 'auto',
+              display: "flex",
+              justifyContent: "space-between",
+              maxWidth: "95%",
+              margin: "auto",
             }}
           >
             <StripeCheckoutButton price={500} />

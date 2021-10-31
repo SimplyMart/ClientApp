@@ -11,6 +11,7 @@ import Cart from "./routes/cart";
 import LoadingPage from "./routes/loading";
 import { Switch, Route } from "react-router-dom";
 import Home from "./routes/home";
+import Store from "./routes/store";
 
 function App() {
   const context = useContext(ClientContext);
@@ -52,6 +53,7 @@ function App() {
             <Route exact path="/scanQr" component={ScanQRCode} />
             <Route exact path="/cart" component={Cart} />
             <Route exact path="/profile" component={Profile} />
+            <Route exact path="/store" component={Store} />
           </Switch>
           <BottomNavBar />
         </div>
