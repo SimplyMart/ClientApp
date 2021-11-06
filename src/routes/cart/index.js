@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import styled from "styled-components";
 import emptyCart from "../../assets/emptyCart.png";
-import "./styles.scss";
 import { ClientContext } from "../../context";
 import CartItems from "../../components/cartItems/index";
 import StripeCheckoutButton from "../../components/PaymentButton";

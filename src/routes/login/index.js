@@ -2,7 +2,6 @@ import React, { useContext } from 'react';
 import { Button } from 'antd';
 import { FcGoogle } from 'react-icons/fc';
 import styled from 'styled-components';
-import './styles.scss';
 import { ClientContext } from '../../context';
 import logo from '../../assets/logo.png';
 

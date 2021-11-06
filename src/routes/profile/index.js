@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import "./styles.scss";
 import { Input, Button, message } from "antd";
 import { AiOutlineUser, AiOutlineLogout, AiOutlineMail } from "react-icons/ai";
 import { GoDeviceMobile } from "react-icons/go";

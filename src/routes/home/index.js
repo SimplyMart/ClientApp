@@ -1,6 +1,5 @@
 import React, { useContext } from 'react';
 import styled from 'styled-components';
-import './styles.scss';
 import { ClientContext } from '../../context';
 import VisitedStoreCard from '../../components/visitedStoreCard';
 

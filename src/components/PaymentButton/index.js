@@ -6,7 +6,6 @@ import StripeCheckout from 'react-stripe-checkout';
 import logoWhiteBg from '../../assets/logo-white-bg.png';
 import { ClientContext } from '../../context';
 import { db } from '../../firebase/firebase.config';
-import './styles.scss';
 
 const StripeCheckoutButton = ({ price }) => {
   const history = useHistory();
