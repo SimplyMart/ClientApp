@@ -62,7 +62,7 @@ As already mentioned above, we learned a lot while implementing some libraries w
 - NextJs
 - Netlify
 
-# ScreenShot3
+# ScreenShots
 
 ## User login/Signup
 <img src="https://user-images.githubusercontent.com/61985499/139577414-4cf97a40-3a91-4850-9d32-204419784c85.png" alt="drawing" style="width:300px;"/>
