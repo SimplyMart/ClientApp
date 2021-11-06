@@ -138,7 +138,7 @@ const Profile = () => {
       });
       message.success("Details Updated!!", 2.5);
     } catch (error) {
-      console.log("Error creating the User", error.message);
+      console.log("Error updating the User", error.message);
     }
   };
 

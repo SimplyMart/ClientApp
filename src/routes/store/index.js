@@ -127,12 +127,11 @@ const StorePage = () => {
       let modifiedCartItems = cartItems.map((l) => Object.assign({}, l));
       if (filteredItem.length > 0) {
         modifiedCartItems.push(filteredItem[0]);
+        setCartItems(modifiedCartItems);
+        const audio = new Audio('../../assets/beep.mp3');
+        audio.play();
+        message.success('Item added to cart successfully');
       }
-      setCartItems(modifiedCartItems);
-
-      const audio = new Audio('../../assets/beep.mp3');
-      audio.play();
-      message.success('Item added to cart successfully');
     });
     Quagga.onProcessed((result) => {
       let drawingCtx = Quagga.canvas.ctx.overlay,
@@ -173,12 +172,14 @@ const StorePage = () => {
         }
       }
     });
+    // eslint-disable-next-line
   }, []);
 
   useEffect(() => {
     if (!activeStoreId) {
       history.push('/');
     }
+    // eslint-disable-next-line
   }, [activeStoreId]);
 
   return (

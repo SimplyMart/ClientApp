@@ -44,8 +44,9 @@ const BottomNavBar = () => {
   const path = location.pathname;
   return (
     <Wrapper>
-      {routes.map((route) => (
+      {routes.map((route, index) => (
         <NavDiv
+          key={index}
           onClick={() => {
             history.push(route.route);
           }}
