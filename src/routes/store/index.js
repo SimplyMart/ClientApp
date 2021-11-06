@@ -18,6 +18,7 @@ const BarCodeScannerDiv = styled.div`
   height: 410px;
   border-radius: 10px;
   background-color: aliceblue;
+  position: relative;
 
   .title {
     font-family: 'Sora', sans-serif;
@@ -58,20 +59,29 @@ const StorePage = () => {
     Quagga.init(
       {
         inputStream: {
-          name: 'Live',
           type: 'LiveStream',
+          target: document.querySelector('#barCodeReader'),
           constraints: {
+            facingMode: 'environment', // or user
             width: 300,
             height: 300,
-            facingMode: 'environment',
           },
-          target: document.querySelector('#barCodeReader'),
         },
+        numOfWorkers: navigator.hardwareConcurrency,
+        locate: true,
+        frequency: 1,
+        debug: {
+          drawBoundingBox: true,
+          showFrequency: true,
+          drawScanline: true,
+          showPattern: true,
+        },
+        multiple: false,
         locator: {
-          halfSample: true,
+          halfSample: false,
           patchSize: 'large', // x-small, small, medium, large, x-large
           debug: {
-            showCanvas: true,
+            showCanvas: false,
             showPatches: false,
             showFoundPatches: false,
             showSkeleton: false,
@@ -79,50 +89,36 @@ const StorePage = () => {
             showPatchLabels: false,
             showRemainingPatchLabels: false,
             boxFromPatches: {
-              showTransformed: true,
-              showTransformedBox: true,
-              showBB: true,
+              showTransformed: false,
+              showTransformedBox: false,
+              showBB: false,
             },
           },
         },
-        numOfWorkers: 4,
         decoder: {
           readers: [
             'code_128_reader',
-            {
-              format: 'ean_reader',
-              config: {
-                supplements: ['ean_5_reader', 'ean_2_reader'],
-              },
-            },
+            'ean_reader',
             'ean_8_reader',
+            'code_39_reader',
+            'code_39_vin_reader',
+            'codabar_reader',
             'upc_reader',
+            'upc_e_reader',
+            'i2of5_reader',
+            'i2of5_reader',
+            '2of5_reader',
+            'code_93_reader',
           ],
-          debug: {
-            drawBoundingBox: true,
-            showFrequency: true,
-            drawScanline: true,
-            showPattern: true,
-          },
         },
-        locate: true,
       },
-      function (err) {
+      (err) => {
         if (err) {
-          console.log(err);
-          return;
+          return console.log(err);
         }
-        console.log('Initialization finished. Ready to start');
         Quagga.start();
       },
     );
-
-    for (let i = 1; i <= 3; i++) {
-      setTimeout(() => {
-        message.success('Item added successfully');
-      }, i*5000);
-    }
-
     Quagga.onDetected((data) => {
       setResult([].concat([data]));
       const filteredItem = activeStoreData.products.filter((product) => {
@@ -134,8 +130,48 @@ const StorePage = () => {
       }
       setCartItems(modifiedCartItems);
 
-      // const audio = new Audio('../../assets/beep.mp3');
-      // audio.play();
+      const audio = new Audio('../../assets/beep.mp3');
+      audio.play();
+      message.success('Item added to cart successfully');
+    });
+    Quagga.onProcessed((result) => {
+      let drawingCtx = Quagga.canvas.ctx.overlay,
+        drawingCanvas = Quagga.canvas.dom.overlay;
+
+      if (result) {
+        if (result.boxes) {
+          drawingCtx.clearRect(
+            0,
+            0,
+            parseInt(drawingCanvas.getAttribute('width')),
+            parseInt(drawingCanvas.getAttribute('height')),
+          );
+          result.boxes
+            .filter((box) => box !== result.box)
+            .forEach((box) => {
+              Quagga.ImageDebug.drawPath(box, { x: 0, y: 1 }, drawingCtx, {
+                color: 'green',
+                lineWidth: 2,
+              });
+            });
+        }
+
+        if (result.box) {
+          Quagga.ImageDebug.drawPath(result.box, { x: 0, y: 1 }, drawingCtx, {
+            color: '#00F',
+            lineWidth: 2,
+          });
+        }
+
+        if (result.codeResult && result.codeResult.code) {
+          Quagga.ImageDebug.drawPath(
+            result.line,
+            { x: 'x', y: 'y' },
+            drawingCtx,
+            { color: 'red', lineWidth: 3 },
+          );
+        }
+      }
     });
   }, []);
 
@@ -158,6 +194,9 @@ const StorePage = () => {
         <span className="title">Barcode Reader</span>
         <div style={{ marginTop: '15px' }} id="barCodeReader" />
       </BarCodeScannerDiv>
+      {results.length > 0 && (
+        <SubHeading>{results[0].codeResult.code}</SubHeading>
+      )}
     </Wrapper>
   );
 };
