@@ -50,8 +50,6 @@ Accomplishments we're proud of are successfully implementing the logic flow we h
 
 As already mentioned above, we learned a lot while implementing some libraries we have never used before. We majorly learned how to collaborate and manage time in these kinds of hackathons.
 
-# What's Next On SimplyMart?
-
 # Built With
 
 - HTML
