@@ -1,24 +1,24 @@
-# Instrustions
+# Instructions
 
-We have submitted an organisation link consisting of 2 repositories:
+We have submitted an organization link consisting of 2 repositories:
 
 - Client App
 
   - User login/signup.
   - Profile page.
-  - QR Scan Page to scan QR code of the store visting.
-  - Visited stores display to select one on home page.
+  - QR Scan Page to scan QR code of the store visiting.
+  - Visited stores display to select one on the home page.
   - Bar code scanner with selected store details opens to scan the bar code of items.
-  - Scanned items will get added to the cart and will be displayed on the cart page with quantity increment/decrement option and total bill will be generated. Press "Pay Now" button and payment page will open, pay the bill and exit the store.
+  - Scanned items will get added to the cart and will be displayed on the cart page with the quantity increment/decrement option and the total bill will be generated. Press the "Pay Now" button and the payment page will open, pay the bill and exit the store.
 
 - Store Admin Panel
   - Admin login/signup.
-  - Payments page to display all the payments that has been made.
-  - Products page to dispaly and update stock of products accordingly.
+  - Payments page to display all the payments that have been made.
+  - Products page to display and update stock of products accordingly.
   - QR Page to display the QR code of the store.
   - Profile page.
 
-**Note: Client app is an app for smartphones only. Please use it on a smartphone only.**
+**Note: The client app is an app for smartphones only. Please use it on a smartphone only.**
 
 # Overview
 
@@ -40,17 +40,15 @@ All four of us having experience in frontend (HTML, CSS, JavaScript, ReactJs) an
 
 # Challenges We Ran Into
 
-Major challenges were using new libraries for scanning of Store QR Codes and Item Barcodes. We used two different libraries namely react-qr-reader and QuaggaJS which track QRs and barcodes in real time respectively. Another major challenge was handling of multiple data at the same time. Another major challenge was sleep deprivation as we later realised that the app we're trying to build is not a simple one with basic features.
+Major challenges were using new libraries for scanning Store QR Codes and Item Barcodes. We used two different libraries namely react-qr-reader and QuaggaJS which track QRs and barcodes in real-time respectively. Another major challenge was handling multiple data at the same time. Another major challenge was sleep deprivation as we later realized that the app we're trying to build is not a simple one with basic features.
 
 # Accomplishments That We Are Proud Of
 
-Accomplishments we're proud of are successfully implementing the logic flow we had decided at the beginning of the hackathon and that too upto our expectations. We're also proud of the web application that we were able to build with libraries which we had never heard of during the hackathon itself as we learned a lot while implementing them.
+Accomplishments we're proud of are successfully implementing the logic flow we had decided at the beginning of the hackathon and that too is upto our expectations. We're also proud of the web application that we were able to build with libraries which we had never heard of during the hackathon itself as we learned a lot while implementing them.
 
 # What We Learned?
 
-As Already mentioned above, we learned a lot while implementing some libraries we have never used before. We majorly learned on how to collaborate and manage time in these kinds of hackathon.
-
-# What's Next On SimplyMart?
+As already mentioned above, we learned a lot while implementing some libraries we have never used before. We majorly learned how to collaborate and manage time in these kinds of hackathons.
 
 # Built With
 
@@ -62,7 +60,7 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 - NextJs
 - Netlify
 
-# ScreenShot3
+# ScreenShots
 
 ## User login/Signup
 <img src="https://user-images.githubusercontent.com/61985499/139577414-4cf97a40-3a91-4850-9d32-204419784c85.png" alt="drawing" style="width:300px;"/>
@@ -99,17 +97,17 @@ As Already mentioned above, we learned a lot while implementing some libraries w
 # FAQs
 
 **Q. How do you plan to prevent theft which might take place?**
-Ans. One of the easiest ways to prevent theft is randomised checkout control, which uses an algorithm to randomly select carts/baskets for control before they leave the mart.
+Ans. One of the easiest ways to prevent theft is randomized checkout control, which uses an algorithm to randomly select carts/baskets for control before they leave the mart.
 
 If a customer’s cart is selected for a random check, the app prompts them to go to the designated area for a check. Their app is locked, making them unable to pay and leave the store before having their cart checked.
 
-Available personnel are prompted to go and perform the security checking. The employee checks if the scanned items match the items in the cart. If there are just a few items in the cart, the employee can simply approve the cart without a lengthy process.
+Available personnel is prompted to go and perform the security checking. The employee checks if the scanned items match the items in the cart. If there are just a few items in the cart, the employee can simply approve the cart without a lengthy process.
 
 If there is a mismatch, the employee can add items the user forgot/did not scan. The customer is given a choice to either decline to proceed with the purchase, or accept the corrections made by the employee.
 
 When the customer accepts the corrections, the updated cart is sent to the customer’s app, prices are recalculated, and the app is unlocked. The total price reflects the corrections made by the employee during the control, and potential theft or misunderstanding is avoided.
 
-This way, your regular shoppers will understand that it is necessary to occasionally have checks to be able to offer frictionless checkout. On the other hand, shoplifters will be deterred if they know that there is a chance that their bag might be checked.
+This way, your regular shoppers will understand that it is necessary to occasionally have checks to be able to offer frictionless checkout. On the other hand, shoplifters will be deterred if they know that there is a chance that their bags might be checked.
 
 **Q. Why do you think your app is useful if services like Amazon deliver stuff and even groceries directly at your home?**
 Ans. In a world where everything is becoming online, we have tried to come up with a middle way by mixing offline and online together. Reports say that 92% of people choose offline shopping over online shopping. People like to go out, check, and buy items for different reasons and we are providing them simplyMart so that they don't have to waste their time.
