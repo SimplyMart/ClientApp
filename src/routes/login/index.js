@@ -51,12 +51,27 @@ const Drawer = styled.div`
   left: 0;
 `;
 
+const SubHeading = styled.div`
+  width: 100%;
+  padding: 0 15px 30px;
+  font-family: 'Sora', sans-serif;
+  font-size: 25px;
+  font-weight: 400;
+  margin: -5px auto 0;
+  color: #23234c;
+`;
+
 const LoginPage = () => {
   const context = useContext(ClientContext);
   const { signInWithGoogle } = context;
   return (
     <Wrapper>
       <StyledLogo src={logo} />
+      <SubHeading>
+        SimplyMart is an application that provides its users easy self-service
+        at shopping marts in a very simple way because it eliminates the long
+        queues and reduces running costs for marts.
+      </SubHeading>
       <Drawer>
         <StyledLoginButton
           type="default"
